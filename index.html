@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SwitchBooks: Move from QuickBooks to Mercury Books without losing your history</title>
+<meta name="description" content="Done-for-you move from QuickBooks Online or Xero to Mercury Books in 48 hours. Chart of accounts, opening balances, open invoices, plus a permanent archive of your history and receipts.">
+<!-- TODO(Ben): confirm business name "SwitchBooks" and domain before publishing. -->
+<style>
+:root{--ink:#0f1222;--muted:#5b6175;--line:#e6e8ef;--bg:#fbfbfd;--card:#fff;--brand:#3b4cca;--brand-ink:#26319a;--soft:#eef0ff;--ok:#127a4a;--warn:#a1520b;--radius:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--brand)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header.nav{position:sticky;top:0;z-index:10;background:rgba(251,251,253,.86);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-.01em;text-decoration:none;color:var(--ink)}
+.logo-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand),#7b5cff);display:grid;place-items:center;color:#fff;font-size:15px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:15px}
+.nav-links a.btn-primary{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:650;font-size:16px;text-decoration:none;border:1px solid transparent;transition:transform .08s ease,box-shadow .2s ease,background .2s}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(59,76,202,.28)}
+.btn-primary:hover{background:var(--brand-ink);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-sm{padding:9px 14px;font-size:14px;border-radius:10px}
+.hero{padding:76px 0 56px;background:radial-gradient(1200px 400px at 50% -80px,#e7e9ff 0,rgba(231,233,255,0) 70%)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:650;color:var(--brand-ink);background:var(--soft);border:1px solid #dfe3ff;padding:6px 12px;border-radius:999px}
+h1{font-size:clamp(34px,5.4vw,58px);line-height:1.06;letter-spacing:-.03em;margin:18px 0 18px;max-width:880px}
+h1 .hl{background:linear-gradient(90deg,var(--brand),#7b5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:700px;margin:0 0 28px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.fine{font-size:14px;color:var(--muted);margin-top:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--ink)}
+.chip b{color:var(--ok)}
+section{padding:64px 0}
+h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
+.sub{color:var(--muted);font-size:18px;margin:0 0 34px;max-width:680px}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.card h3{margin:10px 0 8px;font-size:18px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+.icon{width:40px;height:40px;border-radius:11px;background:var(--soft);display:grid;place-items:center;font-size:20px}
+.problem .card{border-left:4px solid #f0b37a}
+.problem .src{display:block;margin-top:12px;font-size:13px}
+.problem-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{counter-reset:s}
+.step{position:relative;padding-top:46px}
+.step:before{counter-increment:s;content:counter(s);position:absolute;top:22px;left:24px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:14px;display:grid;place-items:center}
+.step h3{margin-top:22px}
+.pricing{background:linear-gradient(180deg,#fff, var(--bg))}
+.price-card{display:flex;flex-direction:column;position:relative}
+.price-card .name{font-weight:700;font-size:17px}
+.price{font-size:44px;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px}
+.price small{font-size:16px;color:var(--muted);font-weight:600}
+.price-card ul{list-style:none;padding:0;margin:18px 0 24px;flex:1}
+.price-card li{padding:7px 0 7px 28px;position:relative;font-size:15.5px;border-top:1px dashed var(--line)}
+.price-card li:first-child{border-top:0}
+.price-card li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
+.featured{border:2px solid var(--brand);box-shadow:0 18px 50px rgba(59,76,202,.16);transform:translateY(-6px)}
+.badge{position:absolute;top:-13px;left:24px;background:var(--brand);color:#fff;font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;letter-spacing:.02em}
+.save{color:var(--ok);font-weight:650;font-size:14px}
+.note{font-size:14px;color:var(--muted);margin-top:18px}
+.trust .card{display:flex;gap:16px;align-items:flex-start}
+.trust .card h3{margin-top:0}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin-bottom:12px}
+.faq summary{cursor:pointer;list-style:none;font-weight:650;padding:16px 28px 16px 0;position:relative;font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:0;top:12px;font-size:24px;color:var(--muted);font-weight:400}
+.faq details[open] summary:after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--muted)}
+.final{background:var(--ink);color:#fff;border-radius:24px;padding:52px 34px;text-align:center}
+.final h2{color:#fff}.final p{color:#c9cce0;max-width:620px;margin:0 auto 26px;font-size:18px}
+.final .btn-primary{background:#fff;color:var(--ink);box-shadow:none}
+.final .btn-primary:hover{background:#eef0ff}
+footer{padding:34px 0 50px;color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;flex-direction:column;gap:10px}
+.todo{outline:2px dashed #e0a200;outline-offset:3px}
+@media (max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.featured{transform:none}}
+@media (max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}.nav-links a:not(.btn){display:none}.hero{padding:52px 0 40px}section{padding:48px 0}.final{padding:40px 22px}.btn{width:100%}.nav .btn{width:auto;padding:8px 12px;font-size:13px}.cta-row{flex-direction:column;align-items:stretch}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="logo-mark">⇄</span>SwitchBooks</a>
+    <nav class="nav-links">
+      <a href="#included">What's included</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <!-- TODO(Ben): replace the mailto below with your real email or booking link (Cal.com / Calendly). -->
+      <a class="btn btn-primary btn-sm" href="mailto:TODO-your-email@example.com?subject=SwitchBooks%20scoping%20call">Book a free scoping call</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Done-for-you QuickBooks &amp; Xero → Mercury Books moves</span>
+      <h1>Move from QuickBooks to Mercury Books <span class="hl">without losing your history.</span></h1>
+      <p class="lead">We set up your Mercury Books chart of accounts, opening balances and open invoices, and save your full QuickBooks history and receipts in a permanent archive. Done in 48 hours. QuickBooks stays untouched until you approve.</p>
+      <div class="cta-row">
+        <!-- TODO(Ben): replace mailto with your email or booking link -->
+        <a class="btn btn-primary" href="mailto:TODO-your-email@example.com?subject=SwitchBooks%20scoping%20call">Book a free scoping call →</a>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
+      </div>
+      <p class="fine">Free 15-minute call. If Mercury Books isn't a fit for your business, we'll tell you.</p>
+      <div class="chips">
+        <span class="chip"><b>✓</b> 48-hour turnaround</span>
+        <span class="chip"><b>✓</b> Flat price, no hourly billing</span>
+        <span class="chip"><b>✓</b> Pay after you check the move</span>
+        <span class="chip"><b>✓</b> QuickBooks Online &amp; Xero</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="problem-band problem">
+    <div class="wrap">
+      <h2>Switching is easy. Keeping your history isn't.</h2>
+      <p class="sub">Mercury Books starts fresh. Your old books don't come with you, and QuickBooks won't keep them forever.</p>
+      <div class="grid g2">
+        <div class="card">
+          <div class="icon">📭</div>
+          <h3>Mercury Books doesn't import your history</h3>
+          <p>Past transactions and categorization rules from QuickBooks Online or Xero don't come across. Mercury recommends a clean cutover with opening balances, and you keep the old records somewhere else.</p>
+          <a class="src" href="https://support.mercury.com/hc/en-us/articles/53484970591892-Moving-to-Books-from-QuickBooks-Online-or-Xero" target="_blank" rel="noopener">Source: Mercury Help Center ↗</a>
+        </div>
+        <div class="card">
+          <div class="icon">⏳</div>
+          <h3>QuickBooks deletes your data a year after you cancel</h3>
+          <p>After you cancel QuickBooks Online you get read-only access for one year. After that the data is gone, which is a problem when your accountant, a lender or an auditor asks for prior years.</p>
+          <a class="src" href="https://quickbooks.intuit.com/learn-support/en-us/help-article/access-permissions/happens-quickbooks-online-data-cancel/L6qDpbE1B_US_en_US" target="_blank" rel="noopener">Source: QuickBooks Help ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="included">
+    <div class="wrap">
+      <h2>What's included</h2>
+      <p class="sub">Everything you need to start fresh in Mercury Books and cancel QuickBooks with confidence.</p>
+      <div class="grid g4">
+        <div class="card"><div class="icon">🗂️</div><h3>Chart of accounts</h3><p>Your QuickBooks or Xero accounts, cleaned up and mapped into Mercury Books.</p></div>
+        <div class="card"><div class="icon">⚖️</div><h3>Opening balances</h3><p>A cutover-date opening-balance entry that ties to your trial balance, so your balance sheet carries over.</p></div>
+        <div class="card"><div class="icon">🧾</div><h3>Open invoices recreated</h3><p>Unpaid customer invoices rebuilt in Mercury so you can keep collecting without missing anything.</p></div>
+        <div class="card"><div class="icon">🗄️</div><h3>History + receipts archive</h3><p>Your general ledger, yearly reports and attachments in a permanent, searchable archive you own. (ExitVault add-on)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="problem-band">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="sub">About 48 hours from access to a finished, checked move.</p>
+      <div class="grid g3 steps">
+        <div class="card step"><h3>Free scoping call</h3><p>15 minutes. We check your setup, how many years of history you have, and whether Mercury Books fits. You get a flat quote.</p></div>
+        <div class="card step"><h3>We do the move</h3><p>You give us access. We build your accounts, balances and open invoices in Mercury Books, and archive your history. QuickBooks isn't changed.</p></div>
+        <div class="card step"><h3>You check it, then pay</h3><p>We walk you through it. Once you approve it, you pay and cancel QuickBooks whenever you're ready.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <div class="wrap">
+      <h2>Simple, flat pricing</h2>
+      <p class="sub">One company, one price. No hourly billing, no subscription.</p>
+      <div class="grid g3">
+        <div class="card price-card">
+          <div class="name">SwitchBooks Move</div>
+          <div class="price">$499 <small>one-time</small></div>
+          <p>Get set up in Mercury Books in 48 hours.</p>
+          <ul>
+            <li>Chart of accounts mapped</li>
+            <li>Opening balances at your cutover date</li>
+            <li>Open invoices recreated</li>
+            <li>Walkthrough call</li>
+          </ul>
+          <a class="btn btn-ghost" href="mailto:TODO-your-email@example.com?subject=SwitchBooks%20Move%20(%24499)">Book a free scoping call</a>
+        </div>
+        <div class="card price-card featured">
+          <span class="badge">BEST VALUE</span>
+          <div class="name">Move + ExitVault bundle</div>
+          <div class="price">$599 <small>one-time</small></div>
+          <p>The full move plus a permanent archive of your history.</p>
+          <ul>
+            <li>Everything in SwitchBooks Move</li>
+            <li>Full general ledger history archived</li>
+            <li>Yearly P&amp;L and balance sheet reports</li>
+            <li>Receipts and attachments saved and indexed</li>
+            <li>Searchable archive you keep forever</li>
+          </ul>
+          <a class="btn btn-primary" href="mailto:TODO-your-email@example.com?subject=SwitchBooks%20Bundle%20(%24599)">Book a free scoping call</a>
+        </div>
+        <div class="card price-card">
+          <div class="name">ExitVault archive</div>
+          <div class="price">+$100 <small>add-on</small></div>
+          <p>Add it to any move, or ask about archive-only if you've already switched.</p>
+          <ul>
+            <li>Ledger, reports and receipts archived</li>
+            <li>Searchable and downloadable</li>
+            <li>Keep it after QuickBooks deletes your data</li>
+          </ul>
+          <a class="btn btn-ghost" href="mailto:TODO-your-email@example.com?subject=ExitVault%20archive">Ask about ExitVault</a>
+        </div>
+      </div>
+      <p class="note">Prices are per company file, USD. Payroll history, inventory and multi-currency books aren't included; we'll flag those on the scoping call.</p>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="wrap">
+      <h2>Your books stay safe</h2>
+      <p class="sub">The move is built so you can't end up worse off.</p>
+      <div class="grid g2">
+        <div class="card"><div class="icon">🔒</div><div><h3>QuickBooks left untouched until you approve</h3><p>We only read from QuickBooks. Nothing there changes or gets cancelled until you approve it, and you choose when to cancel.</p></div></div>
+        <div class="card"><div class="icon">✅</div><div><h3>Pay after you check</h3><p>You review the finished move in Mercury Books first, including balances against your QuickBooks trial balance. Pay only once you're happy with it.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2>FAQ</h2>
+      <p class="sub">Don't see your question? Ask it on the scoping call.</p>
+      <details><summary>Does Mercury Books really not import my QuickBooks history?</summary><p>Right. Mercury's help center says Books doesn't import transaction history from QuickBooks Online, Xero or NetSuite, and recommends a clean cutover with opening balances. We do that cutover for you and archive the history so it isn't lost.</p></details>
+      <details><summary>Do you support Xero too?</summary><p>Yes. The move works the same way from Xero: chart of accounts, opening balances, open invoices, and an optional archive of your Xero history and attachments.</p></details>
+      <details><summary>What do you need from me?</summary><p>Access to your QuickBooks or Xero file (an accountant or user invite works), access to Mercury Books, and a cutover date. We send a short checklist after the scoping call.</p></details>
+      <details><summary>When does the 48 hours start?</summary><p>Once we have access to both systems and you've confirmed your cutover date. Larger or messier files may take longer, and we'll tell you before we start.</p></details>
+      <details><summary>Will you change or cancel my QuickBooks?</summary><p>No. We only read your data. You decide when to cancel, and we suggest doing it after you've checked the move and have your archive.</p></details>
+      <details><summary>What's in the ExitVault archive?</summary><p>Your general ledger, yearly profit &amp; loss and balance sheet reports, customer and vendor lists, and your receipts and attachments, organized and searchable. It's yours to keep and download.</p></details>
+      <details><summary>Is SwitchBooks part of Mercury or Intuit?</summary><p>No. SwitchBooks is an independent service and is not affiliated with, endorsed by or sponsored by Mercury or Intuit.</p></details>
+      <details><summary>What if Mercury Books isn't right for my business?</summary><p>We'll tell you on the free call. For example, Books is USD-only, so multi-currency businesses may not be a fit yet.</p></details>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="final">
+        <h2>Ready to leave QuickBooks behind?</h2>
+        <p>Book a free 15-minute scoping call. You'll get a flat quote and an honest answer on whether Mercury Books fits.</p>
+        <!-- TODO(Ben): replace mailto with your email or booking link -->
+        <a class="btn btn-primary" href="mailto:TODO-your-email@example.com?subject=SwitchBooks%20scoping%20call">Book a free scoping call →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong>SwitchBooks</strong> · Done-for-you moves to Mercury Books</div>
+    <div>SwitchBooks is an independent service and is not affiliated with, endorsed by or sponsored by Mercury Technologies, Inc. or Intuit Inc. Mercury, Mercury Books, QuickBooks and Xero are trademarks of their respective owners.</div>
+    <div>Contact: <a href="mailto:TODO-your-email@example.com">TODO-your-email@example.com</a> <!-- TODO(Ben): real contact email --></div>
+  </div>
+</footer>
+</body>
+</html>
